@@ -1,3 +1,31 @@
-<%@flats.each do |flat| %>
-<%= flat.name %>
-<% end %>
+<!-- not a functional search bar yet -->
+<div class="container">
+  <nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+
+  <div class="h1">Check out our listings</div>
+
+<!-- cards for each flat -->
+<div class="row">
+<!-- iterate inside the row so that it does not make a new row everytime -->
+<% @flats.each do |flat|  %>
+  <div class="col-4">
+    <div class="card w-100" style="width: 18rem;">
+      <img class="card-img-top w-100 p-2" src="https://source.unsplash.com/user/c_v_r" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= flat.name %></h5>
+        <p class="card-text"><%= flat.description %></p>
+        <span class="rate">&#36;<%= flat.price_per_night %>/<span class="text-muted">night</span></span>
+        <span class="rate">&#36;<%= flat.number_of_guests %>/<span class="text-muted">person</span></span>
+        <%= link_to "More info", flat_path(flat) %>
+        <a href="#" class="btn btn-primary">More details!</a>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>
